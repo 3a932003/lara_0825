@@ -71,10 +71,11 @@ Route::get('/', function () {
    /* Post::destroy(3, 5, 7);
     return 'Deleted!';*/
     //6-1
-   $allPosts = Post::all();//多筆貼文的集合
-    dd($allPosts);
-
-
+   /*$allPosts = Post::all();//多筆貼文的集合
+    dd($allPosts);*/
+    //6-2
+    $featuredPosts = Post::where('is_feature', 1)->get(); //多筆貼文的集合
+    dd($featuredPosts);
 
 });
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
