@@ -1,5 +1,6 @@
 <?php
 use App\Models\Post;
+use App\Models\Comment;
 use App\Http\Controllers\PostController;
 
 use Illuminate\Support\Facades\Route;
@@ -82,8 +83,8 @@ Route::get('/', function () {
     //6-4
     /*$lastPost = Post::orderBy('id', 'DESC')->first();
     dd($lastPost);*/
-    //7
-    $post = Post::find(6);
+    //7-4
+    /*$post = Post::find(6);
     echo '標題: '.$post->title.'<br>';
     echo '內容: '.$post->content.'<br>';
     echo '--------------------------'.'<br>';
@@ -92,7 +93,15 @@ Route::get('/', function () {
     foreach ($comments as $comment){
         echo '留言: '.$comment->content."<br>";
         echo '-----------------------------'.'<br>';
-    }
+    }*/
+    $comment = Comment::find(2);
+    echo $comment->content.'<br>';
+    echo '******************'.'<br>';
+    $post = $comment->post()->first();
+    echo $post->id.'<br>';
+    echo $post->title.'<br>';
+    echo $post->content.'<br>';
+
 
 });
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
