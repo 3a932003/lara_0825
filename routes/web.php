@@ -57,12 +57,19 @@ Route::get('/', function () {
     ]);
     return 'Updated, OK!';*/
     //4-3~4-4
-    $post = Post::find(1);
+    /*$post = Post::find(1);
     $post->title = 'saved title';
     $post->content = 'saved content';
     $post->save();
-    return 'Saved, OK!';
-
+    return 'Saved, OK!';*/
+    //5-1
+   /* $post = Post::find(1);
+    $post->delete();*/
+    //5-3
+    Post::destroy(2);
+    //5-5
+    Post::destroy(3, 5, 7);
+    return 'Deleted!';
 });
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
 Route::get('post',[PostController::class, 'show'])->name('posts.show');
