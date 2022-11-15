@@ -66,10 +66,16 @@ Route::get('/', function () {
    /* $post = Post::find(1);
     $post->delete();*/
     //5-3
-    Post::destroy(2);
+    //Post::destroy(2);
     //5-5
-    Post::destroy(3, 5, 7);
-    return 'Deleted!';
+   /* Post::destroy(3, 5, 7);
+    return 'Deleted!';*/
+    //6-1
+   $allPosts = Post::all();//多筆貼文的集合
+    dd($allPosts);
+
+
+
 });
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
 Route::get('post',[PostController::class, 'show'])->name('posts.show');
