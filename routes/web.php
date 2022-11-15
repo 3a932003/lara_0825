@@ -49,13 +49,20 @@ Route::get('/', function () {
     //3-4
 // $posts = Post::where('id', '<', 10)->orderBy('id', 'DESC')->get();//查詢符合條件(id<10)的貼文，排序後，取出
 //  dd($posts);
-    //4
-    $post = Post::find(1);
+    //4-1~4-2
+   /* $post = Post::find(1);
     $post->update([
         'title' => 'updated title',
         'content' => 'updated content',
     ]);
-    return 'Updated, OK!';
+    return 'Updated, OK!';*/
+    //4-3~4-4
+    $post = Post::find(1);
+    $post->title = 'saved title';
+    $post->content = 'saved content';
+    $post->save();
+    return 'Saved, OK!';
+
 });
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
 Route::get('post',[PostController::class, 'show'])->name('posts.show');
