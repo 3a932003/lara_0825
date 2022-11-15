@@ -77,8 +77,11 @@ Route::get('/', function () {
     /*$featuredPosts = Post::where('is_feature', 1)->get(); //多筆貼文的集合
     dd($featuredPosts);*/
     //6-3
-    $fourthPost = Post::find(4);
-    dd($fourthPost);
+    /*$fourthPost = Post::find(4);
+    dd($fourthPost);*/
+    //6-4
+    $lastPost = Post::orderBy('id', 'DESC')->first();
+    dd($lastPost);
 
 });
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
