@@ -80,8 +80,18 @@ Route::get('/', function () {
     /*$fourthPost = Post::find(4);
     dd($fourthPost);*/
     //6-4
-    $lastPost = Post::orderBy('id', 'DESC')->first();
-    dd($lastPost);
+    /*$lastPost = Post::orderBy('id', 'DESC')->first();
+    dd($lastPost);*/
+    //7
+    $post = Post::find(6);
+    echo '標題: '.$post->title.'<br>';
+    echo '內容: '.$post->content.'<br>';
+    echo '--------------------------'.'<br>';
+    $comments = $post->comments()->get(); //$post->comments()->get()可簡寫$post->comments
+    foreach ($comments as $comment){
+        echo '留言: '.$comment->content."<br>";
+        echo '-----------------------------'.'<br>';
+    }
 
 });
 Route::get('posts',[PostController::class, 'index'])->name('posts.index');
